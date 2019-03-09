@@ -60,7 +60,7 @@ def part2(x_train, x_test, lmbd, sigma):
     print("Cov matrix", covariance.shape)
 
     for _ in range(10):
-        temp_cov = [sigma + x_test[i].dot(covariance).dot(x_test[i].T) for i in x_test_index]
+        temp_cov = [x_test[i].dot(covariance).dot(x_test[i].T) for i in x_test_index]
         print("preds", temp_cov[:5])
         print("argmax", np.argmax(temp_cov[:5]))
 
