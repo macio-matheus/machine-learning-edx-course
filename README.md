@@ -1,1 +1,1 @@
-# machine-learning-edx-course
+# Machine Learning Columbia
