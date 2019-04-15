@@ -3,7 +3,7 @@ import numpy as np
 import sys
 
 X_train = np.genfromtxt(sys.argv[1], delimiter=",")
-y_train = np.genfromtxt(sys.argv[2], delimiter=',')
+Y_train = np.genfromtxt(sys.argv[2], delimiter=',')
 X_test = np.genfromtxt(sys.argv[3], delimiter=",")
 
 
@@ -12,12 +12,31 @@ X_test = np.genfromtxt(sys.argv[3], delimiter=",")
 # X_test = np.loadtxt('X_test.csv', delimiter=",")
 
 
-def plugin_classifier(X_train, y_train, X_test):
+def calc_parameters_likelihood_mle(_classes, _x_train, _y_train):
+
+    mus, sigmas, sigma_dets = {}, {}, {}
+    for c in _classes:
+        c_id = (_y_train == c)
+        X = _x_train[c_id, :]
+        mu = np.matrix(np.mean(X, axis=0)).T
+        # calculate gaussian covariance mle
+        n, _ = X.shape
+        sigma = 0
+        for i in range(n):
+            x = np.matrix(X[i, :]).T
+            sigma += (x - mu) * (x - mu).T / n
+        sigma_det = np.linalg.det(sigma)
+        mus[c], sigmas[c], sigma_dets[c] = mu, sigma, sigma_det
+
+    return mus, sigmas, sigma_dets
+
+
+def plugin_classifier(x_train, y_train, x_test):
     """
     Implements bayes classifier
-    :param X_train:
+    :param x_train:
     :param y_train:
-    :param X_test:
+    :param x_test:
     :return: prob_pred for test set
     """
 
@@ -30,27 +49,15 @@ def plugin_classifier(X_train, y_train, X_test):
         priors[c] = np.sum(y_train == c) / n
 
     # calculate parameters of likelihood by MLE
-    mus, sigmas, sigma_dets = {}, {}, {}
-    for c in classes:
-        c_id = (y_train == c)
-        X = X_train[c_id, :]
-        mu = np.matrix(np.mean(X, axis=0)).T
-        # calculate gaussian covariance mle
-        n, _ = X.shape
-        sigma = 0
-        for i in range(n):
-            x = np.matrix(X[i, :]).T
-            sigma += (x - mu) * (x - mu).T / n
-        sigma_det = np.linalg.det(sigma)
-        mus[c], sigmas[c], sigma_dets[c] = mu, sigma, sigma_det
+    mus, sigmas, sigma_dets = calc_parameters_likelihood_mle(classes, x_train, y_train)
 
     c = classes.shape[0]
 
-    n, d = X_test.shape
+    n, d = x_test.shape
     prob_pred = np.zeros((n, c))
 
     for i in range(n):
-        x = np.matrix(X_test[i, :]).T
+        x = np.matrix(x_test[i, :]).T
 
         i_prob = np.zeros(c)
         for j in range(c):
@@ -68,8 +75,13 @@ def plugin_classifier(X_train, y_train, X_test):
     return prob_pred
 
 
-# assuming final_outputs is returned from function
-final_outputs = plugin_classifier(X_train, y_train, X_test)
+def main():
+    # assuming final_outputs is returned from function
+    final_outputs = plugin_classifier(X_train, Y_train, X_test)
 
-# write output to file
-np.savetxt("probs_test.csv", final_outputs, delimiter=",")
+    # write output to file
+    np.savetxt("probs_test.csv", final_outputs, delimiter=",")
+
+
+if __name__ == '__main__':
+    main()
