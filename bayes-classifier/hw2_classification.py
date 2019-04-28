@@ -2,18 +2,24 @@ from __future__ import division
 import numpy as np
 import sys
 
-X_train = np.genfromtxt(sys.argv[1], delimiter=",")
-Y_train = np.genfromtxt(sys.argv[2], delimiter=',')
-X_test = np.genfromtxt(sys.argv[3], delimiter=",")
+# X_train = np.genfromtxt(sys.argv[1], delimiter=",")
+# Y_train = np.genfromtxt(sys.argv[2], delimiter=',')
+# X_test = np.genfromtxt(sys.argv[3], delimiter=",")
 
 
-# X_train = np.loadtxt('X_train.csv', delimiter=",")
-# y_train = np.loadtxt('y_train.csv', delimiter=",")
-# X_test = np.loadtxt('X_test.csv', delimiter=",")
+X_train = np.loadtxt('X_train.csv', delimiter=",")
+Y_train = np.loadtxt('y_train.csv', delimiter=",")
+X_test = np.loadtxt('X_test.csv', delimiter=",")
 
 
 def calc_parameters_likelihood_mle(_classes, _x_train, _y_train):
-
+    """
+    Calc likelihood MLE
+    :param _classes: classes dataset
+    :param _x_train: train set x
+    :param _y_train: train label
+    :return: mus, sigmas, sigma_dets
+    """
     mus, sigmas, sigma_dets = {}, {}, {}
     for c in _classes:
         c_id = (_y_train == c)
