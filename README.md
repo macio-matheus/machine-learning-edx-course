@@ -1,7 +1,7 @@
 ## Machine Learning Columbia
 
 
-This repository contains the weekly projects of the ColumbiaX University Machine Learning Certification Program - CSMM.102x offered by ![edx.org](https://www.edx.org/course/machine-learning).
+This repository contains the weekly projects of the ColumbiaX University Machine Learning Certification Program - CSMM.102x offered by [edx.org](https://www.edx.org/course/machine-learning).
 
 -----
 
