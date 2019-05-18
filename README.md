@@ -3,6 +3,7 @@
 
 This repository contains the weekly projects of the ColumbiaX University Machine Learning Certification Program - CSMM.102x offered by edx.org.
 
+-----
 
 #### Regression
 
