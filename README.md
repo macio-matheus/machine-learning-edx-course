@@ -1,9 +1,28 @@
 ## Machine Learning Columbia
 
 
-This repository contains the weekly projects of the ColumbiaX University Machine Learning Certification Program - CSMM.102x offered by edx.org.
+This repository contains the weekly projects of the ColumbiaX University Machine Learning Certification Program - CSMM.102x offered by ![edx.org](https://www.edx.org/course/machine-learning).
 
 -----
+
+
+#### Course Syllabus
+
+```sh
+  Week 1: maximum likelihood estimation, linear regression, least squares
+  Week 2: ridge regression, bias-variance, Bayes rule, maximum a posteriori inference
+  Week 3: Bayesian linear regression, sparsity, subset selection for linear regression
+  Week 4: nearest neighbor classification, Bayes classifiers, linear classifiers, perceptron
+  Week 5: logistic regression, Laplace approximation, kernel methods, Gaussian processes
+  Week 6: maximum margin, support vector machines, trees, random forests, boosting
+  Week 7: clustering, k-means, EM algorithm, missing data
+  Week 8: mixtures of Gaussians, matrix factorization
+  Week 9: non-negative matrix factorization, latent factor models, PCA and variations
+  Week 10: Markov models, hidden Markov models
+  Week 11: continuous state-space models, association analysis
+  Week 12: model selection, next steps
+```
+
 
 #### Regression
 
@@ -20,11 +39,12 @@ In this assignment, you will implement a K-class Bayes classifier.
 In this assignment you will implement the K-means and EM Gaussian mixture models.
 
 
-### PMF
+#### PMF
 
 In this assignment you will implement the probabilistic matrix factorization (PMF) model.
 
 #### Requeriments
-
-numpy
-python3
+```sh
+  - numpy
+  - python3
+```
