@@ -44,6 +44,7 @@ In this assignment you will implement the K-means and EM Gaussian mixture models
 In this assignment you will implement the probabilistic matrix factorization (PMF) model.
 
 #### Requeriments
+
 ```sh
   - numpy
   - python3
