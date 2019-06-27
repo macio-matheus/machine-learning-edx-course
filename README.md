@@ -49,3 +49,7 @@ In this assignment you will implement the probabilistic matrix factorization (PM
   - numpy
   - python3
 ```
+
+#### TODO
+
+* Add more info on reamde
